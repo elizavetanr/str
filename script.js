@@ -1,22 +1,25 @@
 function showVerticalMessage(str) {
 
-    let newString = '';
     const isValid = (str[0] === 'м');
+    const startString = 'М';
+    let verticalString = '';
 
     if (isValid) {
-        newString = 'М'
-        makeVerticalString(str);
+        let newString = startString + str.slice(1, 9);
+        makeVerticalString(newString);
     } else {
-        newString = str[0];
-        makeVerticalString(str);
+        let newString = str.slice(0, 9);
+        makeVerticalString(newString);
     }
-    console.log(newString);
+    console.log(verticalString);
 
-    function makeVerticalString(str) {
-        for (let char of str.substr(1, 9)) {
-            newString = newString += ('\n' + char);
+    function makeVerticalString(newString) {
+        for (let char of newString) {
+            verticalString += char + '\n';
         }
+        verticalString = verticalString.slice(0, -1);
     }
+
 }
 
 showVerticalMessage('марафон');
